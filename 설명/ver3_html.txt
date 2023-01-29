@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Selection</title>
+</head>
+<body>
+    <h1>{{ food_name }}</h1>
+    <form action="{{ url_for('select') }}" method="post">
+        <button id="select-button" type="submit">Select</button>
+    </form>
+    <form action="{{ url_for('tag') }}" method="post">
+      <input type="hidden" name="food_name" value="{{ food_name }}">
+      <input type="hidden" name="tag1" value="{{ tags[0] }}">
+      <input type="hidden" name="tag2" value="{{ tags[1] }}">
+      <input type="hidden" name="tag3" value="{{ tags[2] }}">
+      <input type="hidden" name="tag4" value="{{ tags[3] }}">
+      <button id="tag-button" type="submit">{{random_tag}}</button>
+  </form>
+</body>
+</html>

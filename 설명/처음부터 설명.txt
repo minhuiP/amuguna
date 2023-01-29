@@ -1,0 +1,118 @@
+1. amuguna.db에는 food_name과 tag1,tag2,tag3,tag4가 있어.
+화면에서는 food_name에서 불러온 단어가 보여져. 그건 [min_food]라고 부를게. 
+첫 번째 보여지는 [min_food]은 amuguna.db에서 food_name을 랜덤하게 가져와.
+그 밑에 [선택]이 써 있는 버튼과 [태그] 버튼이 있어.
+[태그] 버튼은 불러온 food_name의 tag1,tag2,tag3,tag4 값 중에서 하나를 아무거나 랜덤으로 보여줘.
+
+i want to use python, html, flask, sqlite3.
+There are food_name and tag1,tag2,tag3,tag4 in amuguna.db.
+The web screen shows the word called from food_name. I'll call it [min_food].
+The first [min_food] shown is a random food_name from amuguna.db.
+Below that is a button with [Select] written on it and a [Tag] button.
+The [Tag] button randomly shows one of the tag1, tag2, tag3, and tag4 values ​​of the loaded food_name.
+
+
+
+host='localhost', port=8000
+
+
+
+2. [선택] 버튼을 누르면 [축하합니다.]라는 화면으로 넘어가. 이것의 html 파일은 'chuka.html'이야.
+
+can you add other fuction?
+If someone press the [Select] button, it goes to the [Congratulations] screen. Its html file is 'chuka.html'.
+
+
+3. [태그]버튼을 누르면, [min_food]단어는 새로운 food_name을 랜덤으로 불러와.
+단, 조건1. 이미 불러왔던 food_name값은 불러 올 수 없어. 
+조건2. 이미 불러왔던 food_name에 포함된 tag1,tag2,tag3,tag4과 중복되는 값들은 불러 올 수 없어.
+
+
+okay. let's add other fuction.
+first i have to let you know something. the table name is 'amuguna_food'. it is not 'foods'
+
+When the [Tag] button is pressed, the word {{ food_name }} brings up a new food_name randomly.
+However, condition 1. The food_name value that has already been loaded cannot be loaded.
+Condition 2. Duplicate values ​​of tag1, tag2, tag3, and tag4 included in food_name that have already been loaded cannot be loaded.
+
+
+
+i fixed the code. because the button can't bring word from amuguna_food table. 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Selection</title>
+</head>
+<body>
+    <h1>{{ food_name }}</h1>
+    <form action="{{ url_for('select') }}" method="post">
+        <button id="select-button" type="submit">Select</button>
+    </form>
+    <form action="{{ url_for('tag') }}" method="post">
+        <button id="tag-button" type="submit">{{random_tag}}</button>
+    </form>
+</body>
+</html>
+
+and the python, html code didn't work when i clicked the {{random_tag}} button. 
+i want to change new {{ food_name }} and {{random_tag}} after click the {{random_tag}} button.
+
+
+
+okay. 
+이제 한 번 보여준 {{ food_name }}은 다시 보여주지 말자.
+그리고한 번 보여준 {{ food_name }}에게 포함 된 tag가 포함된 다른 food_name도 보여주지 말자.
+
+
+Now, let's not show {{ food_name }} again what is already shown.
+And let's not show another tags included in {{ food_name }} once shown.
+
+tag 버튼을 클릭할때마다, 이 과정을 반복시켜줘.
+
+
+미안 수정할께. 
+sorry i'll fix it
+Let's not show {{ food_name }} that contains the tag that was shown once. is not.
+Let's not show {{ food_name }} that contains the tag that was clicked once. 
+
+
+
+
+
+새로운 기능이 있는 버튼을 하나만 추가하자.
+[gunang] 버튼이야.
+[선택]과 [tag] 버튼 사이에 있어.
+
+이 버튼을 누르면, 예전에 클릭했던 tag가 포함된 {{ food_name }}는 보여주지말자.
+그냥 버튼이 클릭 되었을때, 보여지는 태그는 다음에도 보여질 수 있다.
+
+
+I'll redefine the [gunang] button.
+I don't want to use javascript very much.
+Let's add one button with a new function.
+It's the [gunang] button.
+It's between the [select] and [tag] buttons.
+When [gunang] button is clicked, don't show {{ food_name }} containing the previously clicked tag.
+Just when the button is clicked, the visible tags can also be displayed the next time.
+
+
+
+이제 정말 마지막으로. 
+이제 [gunang], [tag] 버튼을 클릭해도 보여줄 수 있는 새로운 {{ food_name }}이 없을 경우. 
+[dont_eat.html]로 이동할 수 있게 해줘.
+
+
+Now really finally.
+sorry i'll fix it
+Now if there is no new {{ food_name }} that can be displayed after clicking the [gunang] or the [tag] button.
+Allow me to navigate to [dont_eat.html].
+
+
+
+
+can you change the code what it will let the site go to 'donteat.html' after showing last food_name?
+i don't want to another button withour 'select' and 'tag' and 'gunang'.
+and i want to change website page to 'donteat.html' after showing last food_name.
+and i just want to use sqlite3 and flask, python, html.
+
+oh sorry. i just want to change website page to 'donteat.html' when someone click after showing last food_name, like a selecting 'select' button

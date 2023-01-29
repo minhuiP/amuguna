@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Selection</title>
+</head>
+<body>
+    <h1>{{ food_name }}</h1>
+    <form action="{{ url_for('select') }}" method="post">
+        <button id="select-button" type="submit">Select</button>
+    </form>
+    <form action="{{ url_for('tag') }}" method="post">
+        <button id="tag-button" type="submit" name="tag" value="{{random_tag}}">{{random_tag}}</button>
+    </form>
+</body>
+</html>

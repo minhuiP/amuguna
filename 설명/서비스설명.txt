@@ -1,0 +1,48 @@
+1. sqlite3 데이터 베이스는 'amuguna.db'이고 테이블은 'amuguna_food'. 행은 'food_name','food_image', 'tag1','tag2','tag3','tag4'가 있다.
+코드는 python, flask, html를 사용한다.
+
+2. 사용자가 사이트에 접속하면, food_name중 하나를 랜덤으로 화면에서 볼수 있다. 
+그 밑에는 '선택', 'gunang', 'tag(tag 버튼에는 food_name의 tag1,tag2,tag3,tag4중 하나가 랜덤으로 보여진다.)' 버튼이 있다..
+
+-'선택' 버튼을 클릭하면 'chuka.html'로 이동한다.
+-'gunang' 버튼을 클릭한다. 그러면 지금까지 클릭되었던 태그들이 포함된 food_name 제외하고, 새로운 food_name중 하나가 랜덤으로 보여진다.
+-'tag'버튼을 클릭하면, 클릭한 'tag'와 지금까지 클릭되었던 태그들이 포함된 food_name 제외하고, 새로운 food_name중 하나가 랜덤으로 보여진다.
+
+이 과정이 반복 된다.
+
+4.  전체 food_name 갯수 -  '태그가 보여져서 제외 된 food_name의 갯수' - '보여진 food_name 갯수' = 0 이 되면.
+화면은 'donteat.html'로 이동한다. 
+
+
+
+1. The sqlite3 database is 'amuguna.db' and the table is 'amuguna_food'. The rows include 'food_name', 'food_image', 'tag1', 'tag2', 'tag3', and 'tag4'.
+The code uses python, flask, and html.
+
+2. When a user accesses the site, he can randomly see one of the food_names on the screen.
+Below that, there are 'Select', 'gunang', and 'tag' buttons.
+
+- Click the 'Select' button to move to 'chuka.html'.
+-Click the 'gunang' button. Then one of the new food_names is shown randomly, except for the food_name that contains the tags that have been clicked so far.
+-When the 'tag' button is clicked, one of the new food_names is shown randomly, except for the 'tag' that was clicked and the food_name that includes the tags that have been clicked so far.
+
+This process is repeated.
+
+4. Total number of food_name - 'Number of food_name excluded because tag is shown' - 'Number of food_name shown' = 0.
+The screen moves to 'donteat.html'.
+
+
+
+
+I want to create a website using python, flask, and html where a user can access a SQLite3 database 'amuguna.db' 
+and a table 'amuguna_food' with rows including 'food_name', 'tag1', 'tag2', 'tag3', and 'tag4'. 
+When the user accesses the website, they will see a randomly selected food_name on the screen, along with 'Select', 'gunang', and 'tag' buttons. 
+In the tag button, one of tag1, tag2, tag3, and tag4 of food_name is randomly shown.
+If the user clicks the 'Select' button, they will be directed to the 'chuka.html' page. 
+If the user clicks the 'gunang' button, a new randomly selected food_name will appear, but it will not include any food_names that contain the tags that have been clicked previously. 
+If the user clicks the 'tag' button, a new randomly selected food_name will appear, 
+but it will not include the 'tag' that was clicked or any food_names that contain the tags that have been clicked previously. 
+This process will continue until all food_names have been excluded, at which point the screen will move to 'donteat.html'.
+
+ Total number of food_name - 'Number of food_name excluded because tag is shown' - 'Number of food_name shown' = 0.
+The screen moves to 'donteat.html'.
+And food names and tags must not be duplicated.
