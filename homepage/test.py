@@ -47,5 +47,12 @@ def tag():
     random_tag = random.choice(new_tags)
     return render_template('index.html', food_name=new_food_name, tags=new_tags, random_tag=random_tag)
 
+@app.route('/gunang', methods=['POST'])
+def gunang():
+    loaded_tags.remove(request.form['random_tag'])
+    new_food_name, new_tags = get_random_food_and_tag()
+    random_tag = random.choice(new_tags)
+    return render_template('index.html', food_name=new_food_name, tags=new_tags, random_tag=random_tag)
+
 if __name__ == '__main__':
     app.run(host='localhost', port=8000)
