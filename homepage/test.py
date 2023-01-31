@@ -13,7 +13,7 @@ def get_random_food_and_tag():
     food_name = None
     tags = None
     while food_name is None or any(tag in loaded_tags for tag in tags):
-        c.execute("SELECT food_name, tag1, tag2, tag3, tag4 FROM amuguna_food ORDER BY RANDOM() LIMIT 1")
+        c.execute("SELECT food_name, tag1, tag2, tag3, tag4 FROM amuguna_food WHERE food_name NOT IN ({0}) ORDER BY RANDOM() LIMIT 1".format(','.join(['?']*len(loaded_food_names))), loaded_food_names)
         food = c.fetchone()
         food_name = food[0]
         tags = (food[1], food[2], food[3], food[4])
