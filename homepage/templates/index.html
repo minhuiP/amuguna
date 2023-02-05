@@ -14,5 +14,11 @@
       <input type="hidden" name="random_tag" value="{{random_tag}}">
       <button id="gunang-button" type="submit">Gunang</button>
     </form>
+
+        {% if donteat %}
+        {{ donteat }}
+    {% else %}
+        <!-- display food name, tags, and random tag -->
+    {% endif %}
 </body>
 </html>
