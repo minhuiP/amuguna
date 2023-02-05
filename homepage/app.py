@@ -22,12 +22,13 @@ def get_random_food_and_tag():
         c.execute("SELECT food_name, tag1, tag2, tag3, tag4 FROM amuguna_food WHERE food_name NOT IN ({0}) ORDER BY RANDOM() LIMIT 1".format(','.join(['?']*len(loaded_food_names))), loaded_food_names)
         food = c.fetchone()
         if food is None:
-            break
+            return None, None
         food_name = food[0]
         tags = (food[1], food[2], food[3], food[4])
     loaded_tags.update(tags)
     conn.close()
     return food_name, tags
+
 
 
 @app.route('/')
@@ -37,7 +38,8 @@ def index():
         random_tag = random.choice(tags)
         return render_template('index.html', food_name=food_name, tags=tags, random_tag=random_tag)
     else:
-        return render_template('index.html', donteat='Don\'t Eat')
+        return render_template('index.html', donteat = "donteat")
+
 
 @app.route('/select', methods=['POST'])
 def select():
@@ -54,6 +56,8 @@ def tag():
     clicked_tag = request.form['tag']
     loaded_tags.add(clicked_tag)
     new_food_name, new_tags = get_random_food_and_tag()
+    if new_food_name is None:
+        return render_template('index.html', donteat = "donteat")
     while any(tag in new_food_name for tag in loaded_tags):
         new_food_name, new_tags = get_random_food_and_tag()
     random_tag = random.choice(new_tags)
@@ -65,9 +69,11 @@ def gunang():
         loaded_tags.remove(request.form['random_tag'])
     else:
         # Handle the case where the key 'random_tag' does not exist
-        pass
+        return redirect(url_for('index'))  # redirect back to the index page
 
     new_food_name, new_tags = get_random_food_and_tag()
+    if new_food_name is None:
+        return render_template('index.html', donteat = "donteat")
     random_tag = random.choice(new_tags)
     return render_template('index.html', food_name=new_food_name, tags=new_tags, random_tag=random_tag)
 
